@@ -47,13 +47,11 @@ default_layer {
         };
 
         raise_layer {
-            display-name = "Raise Layer";
+            display-name = "Raise Layer (Symbols/RGB)";
+            // Controles RGB en la fila superior izquierda
             bindings = <
-    // *************************************************************************
-    // * NUEVOS CONTROLES RGB (Encender/Apagar, Brillo, Efecto, Tono) *
-    // *************************************************************************
+    // Fila superior (Símbolos QWERTY + Controles RGB)
     &rgb_ug TOG &rgb_ug HUI &rgb_ug HUD &rgb_ug EFF &rgb_ug HUE &trans      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-    //          | ON/OFF |  BR+ |  BR- | EFF+ |  HUE+ |
     
     // Fila principal
     &kp LCTRL &trans  &trans &trans  &trans  &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
@@ -65,5 +63,3 @@ default_layer {
                                  &kp LGUI &trans  &kp SPACE  &kp RET   &trans   &kp RALT
             >;
         };
-    };
-};
