@@ -1,0 +1,9 @@
+&default_transform {
+	ws2812_strip: ws2812_strip {
+		compatible = "ws2812-controller";
+		label = "WS2812 LED strip";
+		chain-length = <10>;
+		color-mapping = <(ZMK_RGB_ORDER_GRB)>;
+		output-gpios = <&pro_micro 3 GPIO_ACTIVE_HIGH>;
+	};
+};
