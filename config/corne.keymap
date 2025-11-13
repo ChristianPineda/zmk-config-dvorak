@@ -26,7 +26,6 @@
             display-name = "Lower Layer";
             bindings = <
 &kp TAB &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp BSPC
-// ** ESTA LÍNEA ES LA CRÍTICA: Sintaxis limpia para Bluetooth **
 &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
 &kp LSHFT &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
 &kp LGUI &trans &kp SPACE &kp RET &trans &kp RALT
@@ -36,7 +35,6 @@
         raise_layer {
             display-name = "Raise Layer (Symbols/RGB)";
             bindings = <
-// ** RGB AGREGADO Y LIMPIO **
 &rgb_ug TOG &rgb_ug HUI &rgb_ug HUD &rgb_ug EFF &rgb_ug HUE &trans &kp CARET &kp AMPS &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
 &kp LCTRL &trans &trans &trans &trans &trans &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &kp BSLH &kp GRAVE
 &kp LSHFT &trans &trans &trans &trans &trans &kp UNDER &kp PLUS &kp LBRC &kp RBRC &kp PIPE &kp TILDE
