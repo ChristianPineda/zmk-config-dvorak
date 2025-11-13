@@ -9,8 +9,8 @@
         default_layer {
             display-name = "Dvorak/ES Layer (Last Punctuation Attempt)";
             bindings = <
-&kp TAB &kp BSLH &kp COMMA &kp DOT &kp P &kp Y &kp F &kp G &kp C &kp R &kp L &kp BSPC
-&kp LCTRL &kp A &kp O &kp E &kp U &kp I &kp D &kp H &kp T &kp N &kp S &kp MINUS
+&kp TAB &kp MINUS &kp COMMA &kp DOT &kp P &kp Y &kp F &kp G &kp C &kp R &kp L &kp BSPC
+&kp LCTRL &kp A &kp O &kp E &kp U &kp I &kp D &kp H &kp T &kp N &kp S &kp NON_US_BSLH
 &kp LGUI &mo 1 &kp SPACE &kp RET &mo 2 &kp RALT
             >;
         };
