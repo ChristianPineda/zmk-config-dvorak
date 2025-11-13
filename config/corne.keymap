@@ -12,19 +12,25 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
-            display-name = "Dvorak Layer";
+default_layer {
+            display-name = "Dvorak/ES Layer";
 // -----------------------------------------------------------------------------------------
 // | TAB | ' | , | . | P | Y | | F | G | C | R | L | BSPC | (DVORAK)
 // | CTRL | A | O | E | U | I | | D | H | T | N | S | - | (DVORAK)
 // | SHFT | ; | Q | J | K | X | | B | M | W | V | Z | ESC | (DVORAK)
 // | GUI | LWR | SPC | | ENT | RSE | ALT |
             bindings = <
-    // Fila superior: ' , . P Y     F G C R L /
-    &kp TAB  &kp SQT &kp COMMA &kp DOT &kp P &kp Y     &kp F &kp G &kp C   &kp R   &kp L    &kp BSPC
+    // *CORRECCIONES APLICADAS A LA FILA SUPERIOR*
+    // Queremos: ' , . P Y     F G C R L /
+    // La tecla SQT (Dvorak) ahora es &kp RBKT para que el SO ES-MX lo interprete como '
+    &kp TAB  &kp RBKT &kp COMMA &kp DOT &kp P &kp Y     &kp F &kp G &kp C   &kp R   &kp L    &kp BSPC
+
     // Fila principal: A O E U I     D H T N S -
-    &kp LCTRL &kp A &kp O &kp E &kp U &kp I     &kp D &kp H &kp T   &kp N   &kp S    &kp MINUS
-    // Fila inferior: ; Q J K X     B M W V Z /
+    // La tecla MINUS (Dvorak) ahora es &kp EQUAL para que el SO ES-MX lo interprete como -
+    &kp LCTRL &kp A &kp O &kp E &kp U &kp I     &kp D &kp H &kp T   &kp N   &kp S    &kp EQUAL
+
+    // Fila inferior: Ñ Q J K X     B M W V Z /
+    // La tecla SEMI (Dvorak) YA FUNCIONA como Ñ. Lo dejamos.
     &kp LSHFT &kp SEMI &kp Q &kp J &kp K &kp X     &kp B &kp M &kp W &kp V &kp Z &kp ESC
                 &kp LGUI &mo 1 &kp SPACE &kp RET &mo 2 &kp RALT
             >;
