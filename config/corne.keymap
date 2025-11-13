@@ -47,19 +47,12 @@ default_layer {
         };
 
         raise_layer {
-            display-name = "Raise Layer (Symbols/RGB)";
-            // Controles RGB en la fila superior izquierda
-            bindings = <
-    // Fila superior (Símbolos QWERTY + Controles RGB)
-    &rgb_ug TOG &rgb_ug HUI &rgb_ug HUD &rgb_ug EFF &rgb_ug HUE &trans      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-    
-    // Fila principal
-    &kp LCTRL &trans  &trans &trans  &trans  &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
-    
-    // Fila inferior
-    &kp LSHFT &trans  &trans &trans  &trans  &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-    
-    // Pulgares
-                                 &kp LGUI &trans  &kp SPACE  &kp RET   &trans   &kp RALT
-            >;
-        };
+            display-name = "Raise Layer (Symbols/RGB)";
+            // Controles RGB en la fila superior izquierda
+            bindings = <
+    &rgb_ug TOG &rgb_ug HUI &rgb_ug HUD &rgb_ug EFF &rgb_ug HUE &trans      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
+    &kp LCTRL &trans  &trans &trans  &trans  &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
+    &kp LSHFT &trans  &trans &trans  &trans  &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
+                                 &kp LGUI &trans  &kp SPACE  &kp RET    &trans   &kp RALT
+            >;
+        };
