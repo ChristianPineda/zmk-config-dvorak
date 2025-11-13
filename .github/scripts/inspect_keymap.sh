@@ -15,9 +15,9 @@ for F in $FILES; do
   printf "\nChecking BOM (UTF-8 BOM = EF BB BF): "
   head -c3 "$F" | xxd -p -c3 || true
   printf "\nSearching for non-ASCII bytes:\n"
-  if grep -nP "[^\x00-\x7F]" "$F" >/dev/null 2>&1; then
+  if grep -nP '[^\x00-\x7F]' "$F" >/dev/null 2>&1; then
     printf "  NON-ASCII bytes found in lines:\n"
-    grep -nP "[^\x00-\x7F]" "$F" || true
+    grep -nP '[^\x00-\x7F]' "$F" || true
     FAIL=1
   else
     printf "  none\n"
