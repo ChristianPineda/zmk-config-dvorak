@@ -36,8 +36,6 @@ default_layer {
             >;
         };
 
-// --- Las capas Lower y Raise se mantienen sin cambios ---
-
         lower_layer {
             display-name = "Lower Layer";
             bindings = <
@@ -51,9 +49,19 @@ default_layer {
         raise_layer {
             display-name = "Raise Layer";
             bindings = <
-    &kp TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT     &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
+    // *************************************************************************
+    // * NUEVOS CONTROLES RGB (Encender/Apagar, Brillo, Efecto, Tono) *
+    // *************************************************************************
+    &rgb_ug TOG &rgb_ug HUI &rgb_ug HUD &rgb_ug EFF &rgb_ug HUE &trans      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
+    //          | ON/OFF |  BR+ |  BR- | EFF+ |  HUE+ |
+    
+    // Fila principal
     &kp LCTRL &trans  &trans &trans  &trans  &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
+    
+    // Fila inferior
     &kp LSHFT &trans  &trans &trans  &trans  &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
+    
+    // Pulgares
                                  &kp LGUI &trans  &kp SPACE  &kp RET   &trans   &kp RALT
             >;
         };
