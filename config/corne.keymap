@@ -9,7 +9,22 @@
         default_layer {
             display-name = "Dvorak/ES Layer";
             bindings = <
-&kp TAB &kp RBKT &kp COMMA &kp DOT &kp P &kp Y &kp F &kp G &kp C &kp R &kp L &kp BSPC &kp LCTRL &kp A &kp O &kp E &kp U &kp I &kp D &kp H &kp T &kp N &kp S &kp EQUAL &kp LSHFT &kp SEMI &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &kp Z &kp ESC &kp LGUI &mo 1 &kp SPACE &kp RET &mo 2 &kp RALT
+// FILA 1 (Dvorak - Ajuste para ES-MX)
+&kp TAB &kp RBKT &kp COMMA &kp DOT &kp P &kp Y &kp F &kp G &kp C &kp R &kp L &kp BSPC
+// En el layout Dvorak US: &kp RBKT es la tecla ' (apostrophe)
+// Al enviarse &kp RBKT, tu SO ES-MX debería interpretar el apóstrofo/más.
+
+// FILA 2 (Dvorak - Ajuste para ES-MX)
+&kp LCTRL &kp A &kp O &kp E &kp U &kp I &kp D &kp H &kp T &kp N &kp S &kp EQUAL
+// En el layout Dvorak US: &kp EQUAL es la tecla - (hyphen)
+// Al enviarse &kp EQUAL, tu SO ES-MX debería interpretar el guion/pregunta abierta.
+
+// FILA 3
+&kp LSHFT &kp SEMI &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &kp Z &kp ESC 
+// &kp SEMI es la Ñ en ES-MX
+
+// FILA 4
+&kp LGUI &mo 1 &kp SPACE &kp RET &mo 2 &kp RALT
             >;
         };
 
