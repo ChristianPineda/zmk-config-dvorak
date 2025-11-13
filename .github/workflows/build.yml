@@ -1,5 +1,4 @@
-# Actualización del workflow: valida keymaps antes de invocar el reusable build workflow
-# (Este archivo reemplaza o complementa el existente en .github/workflows/build.yml)
+# Actualización: agrega job de diagnóstico que se ejecuta si el job de build falla.
 name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
 
@@ -55,11 +54,9 @@ jobs:
               printf "  none\n"
             fi
             printf "\nSearching for '//' or '/*' comment tokens (these break devicetree inside bindings):\n"
-            # First detect any '//' occurrences at all
             if grep -n "//" "$F" >/dev/null 2>&1 || grep -n "/\\*" "$F" >/dev/null 2>&1; then
               printf "  Comment tokens found, printing occurrences with context:\n"
-              grep -n -n -n -C2 -E "//|/\\*" "$F" || true
-              # For each occurrence show hex and visible form of the surrounding lines
+              grep -n -C2 -E "//|/\\*" "$F" || true
               grep -n -E "//|/\\*" "$F" | cut -d: -f1 | sort -u | while read -r LN; do
                 printf "\n--- Context around line %s ---\n" "$LN"
                 sed -n "$((LN-3)),$((LN+3))p" "$F" | nl -ba -w3 -s': '
@@ -99,3 +96,49 @@ jobs:
     name: Build (reusable ZMK workflow)
     needs: validate-keymaps
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+
+  diagnose:
+    name: Diagnose keymap on build failure
+    needs: build
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Add diagnose script
+        run: |
+          mkdir -p .github/scripts
+          cat > .github/scripts/diagnose_failed_build.sh <<'EOF'
+          #!/usr/bin/env bash
+          set -euo pipefail
+          printf "Running diagnose for keymap files (lines + hex around typical failure area)\n"
+          FILES=$(find config -type f -name '*.keymap' || true)
+          if [[ -z "$FILES" ]]; then
+            printf "No keymap files found under config/\n"
+            exit 0
+          fi
+          for F in $FILES; do
+            printf "\n==> FILE: %s\n" "$F"
+            printf "file -bi: "
+            file -bi "$F" || true
+            printf "\n--- Lines 1..120 (with numbers) ---\n"
+            nl -ba -w3 -s': ' "$F" | sed -n '1,120p'
+            printf "\n--- Lines 28..36 (context around reported failure) ---\n"
+            nl -ba -w3 -s': ' "$F" | sed -n '28,36p'
+            printf "\n--- Hex/bytes of lines 28..36 ---\n"
+            sed -n '28,36p' "$F" | nl -ba -w3 -s': ' | while read -r L; do
+              LN=$(printf "%s" "$L" | cut -d: -f1)
+              LINE_CONTENT=$(sed -n "${LN}p" "$F" || true)
+              printf "\nLine %s text: %s\n" "$LN" "$LINE_CONTENT"
+              printf "Line %s as hex:\n" "$LN"
+              sed -n "${LN}p" "$F" | xxd -g 1 -u || true
+              printf "Line %s visible chars (cat -A):\n" "$LN"
+              sed -n "${LN}p" "$F" | cat -A -v || true
+            done
+          done
+          EOF
+          chmod +x .github/scripts/diagnose_failed_build.sh
+
+      - name: Run diagnose script
+        run: ./.github/scripts/diagnose_failed_build.sh
