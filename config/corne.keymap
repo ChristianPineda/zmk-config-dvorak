@@ -12,47 +12,61 @@
     keymap {
         compatible = "zmk,keymap";
 
-default_layer {
+        default_layer {
             display-name = "Dvorak/ES Layer";
-// -----------------------------------------------------------------------------------------
-// | TAB | ' | , | . | P | Y | | F | G | C | R | L | BSPC | (DVORAK)
-// | CTRL | A | O | E | U | I | | D | H | T | N | S | - | (DVORAK)
-// | SHFT | ; | Q | J | K | X | | B | M | W | V | Z | ESC | (DVORAK)
-// | GUI | LWR | SPC | | ENT | RSE | ALT |
             bindings = <
-    // *CORRECCIONES APLICADAS A LA FILA SUPERIOR*
-    // Queremos: ' , . P Y     F G C R L /
-    // La tecla SQT (Dvorak) ahora es &kp RBKT para que el SO ES-MX lo interprete como '
-    &kp TAB  &kp RBKT &kp COMMA &kp DOT &kp P &kp Y     &kp F &kp G &kp C   &kp R   &kp L    &kp BSPC
+    // Fila superior (DVORAK + Corrección ES-MX para ', -, etc.)
+    // Dvorak: ' , . P Y     F G C R L
+    // SQT (Dvorak) usa &kp RBKT para dar ' en SO ES-MX
+    // BSLH (Dvorak) usa &kp EQUAL para dar - en SO ES-MX
+    &kp TAB  &kp RBKT &kp COMMA &kp DOT &kp P &kp Y      &kp F &kp G &kp C   &kp R   &kp L    &kp BSPC
 
-    // Fila principal: A O E U I     D H T N S -
-    // La tecla MINUS (Dvorak) ahora es &kp EQUAL para que el SO ES-MX lo interprete como -
-    &kp LCTRL &kp A &kp O &kp E &kp U &kp I     &kp D &kp H &kp T   &kp N   &kp S    &kp EQUAL
+    // Fila principal (DVORAK)
+    // Dvorak: A O E U I     D H T N S
+    &kp LCTRL &kp A &kp O &kp E &kp U &kp I      &kp D &kp H &kp T   &kp N   &kp S    &kp EQUAL
 
-    // Fila inferior: Ñ Q J K X     B M W V Z /
-    // La tecla SEMI (Dvorak) YA FUNCIONA como Ñ. Lo dejamos.
-    &kp LSHFT &kp SEMI &kp Q &kp J &kp K &kp X     &kp B &kp M &kp W &kp V &kp Z &kp ESC
-                &kp LGUI &mo 1 &kp SPACE &kp RET &mo 2 &kp RALT
+    // Fila inferior (DVORAK)
+    // Dvorak: Ñ Q J K X     B M W V Z
+    // SEMI (QWERTY) da Ñ en SO ES-MX. Se mantiene.
+    &kp LSHFT &kp SEMI &kp Q &kp J &kp K &kp X      &kp B &kp M &kp W &kp V &kp Z &kp ESC
+
+    // Pulgares
+    &kp LGUI &mo 1 &kp SPACE &kp RET &mo 2 &kp RALT
             >;
         };
 
         lower_layer {
-            display-name = "Lower Layer";
+            display-name = "Lower Layer (Numpad/BT)";
             bindings = <
-    &kp TAB  &kp N1     &kp N2     &kp N3     &kp N4     &kp N5          &kp N6  &kp N7  &kp N8 &kp N9   &kp N0 &kp BSPC
+    // Fila superior: Números
+    &kp TAB  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5          &kp N6  &kp N7  &kp N8 &kp N9  &kp N0 &kp BSPC
+    
+    // Fila principal: Bluetooth
     &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-    &kp LSHFT  &trans     &trans     &trans     &trans     &trans          &trans  &trans  &trans &trans   &trans &trans
-                                 &kp LGUI   &trans     &kp SPACE      &kp RET  &trans  &kp RALT
+    
+    // Fila inferior
+    &kp LSHFT  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans &trans  &trans &trans
+    
+    // Pulgares
+                                 &kp LGUI  &trans  &kp SPACE   &kp RET  &trans  &kp RALT
             >;
         };
 
         raise_layer {
-            display-name = "Raise Layer (Symbols/RGB)";
-            // Controles RGB en la fila superior izquierda
-            bindings = <
-    &rgb_ug TOG &rgb_ug HUI &rgb_ug HUD &rgb_ug EFF &rgb_ug HUE &trans      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-    &kp LCTRL &trans  &trans &trans  &trans  &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
-    &kp LSHFT &trans  &trans &trans  &trans  &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-                                 &kp LGUI &trans  &kp SPACE  &kp RET    &trans   &kp RALT
-            >;
-        };
+            display-name = "Raise Layer (Symbols/RGB)";
+            bindings = <
+    // Fila superior: Controles RGB
+    &rgb_ug TOG &rgb_ug HUI &rgb_ug HUD &rgb_ug EFF &rgb_ug HUE &trans      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
+    
+    // Fila principal: Símbolos
+    &kp LCTRL &trans  &trans &trans  &trans  &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
+    
+    // Fila inferior
+    &kp LSHFT &trans  &trans &trans  &trans  &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
+    
+    // Pulgares
+                                 &kp LGUI &trans  &kp SPACE  &kp RET    &trans   &kp RALT
+            >;
+        };
+    };
+};
