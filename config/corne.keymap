@@ -39,3 +39,8 @@
         zmk,user-hid-consumer-report-size = <1>;
     };
 };
+behaviors {
+        compatible = "zmk,behaviors";
+        zmk,hid-consumer;
+    };
+};
