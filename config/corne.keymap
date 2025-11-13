@@ -7,10 +7,10 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "Dvorak/ES Layer (ISO Test)";
+            display-name = "Dvorak/ES Layer (Final Punctuation)";
             bindings = <
-&kp TAB &kp MINUS &kp COMMA &kp DOT &kp P &kp Y &kp F &kp G &kp C &kp R &kp L &kp BSPC
-&kp LCTRL &kp A &kp O &kp E &kp U &kp I &kp D &kp H &kp T &kp N &kp S &kp NON_US_BSLH
+&kp TAB &kp RBKT &kp COMMA &kp DOT &kp P &kp Y &kp F &kp G &kp C &kp R &kp L &kp BSPC
+&kp LCTRL &kp A &kp O &kp E &kp U &kp I &kp D &kp H &kp T &kp N &kp S &kp EQUAL
 &kp LSHFT &kp SEMI &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &kp Z &kp ESC 
 &kp LGUI &mo 1 &kp SPACE &kp RET &mo 2 &kp RALT
             >;
