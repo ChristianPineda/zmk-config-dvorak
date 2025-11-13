@@ -7,15 +7,6 @@
     keymap {
         compatible = "zmk,keymap";
 
-        media_lock_macro: media_lock_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <
-                &kp LGUI
-                &kp L
-            >;
-        };
-
         default_layer {
             display-name = "Dvorak/ES Layer";
             bindings = <
@@ -36,8 +27,8 @@
             display-name = "Raise Layer (Media/Movement)";
             bindings = <
 &trans &trans &trans &trans &trans &trans &kp CARET &kp AMPS &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-&kp LCTRL &kp C_PLAY_PAUSE &kp C_PREV &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp D &kp H &kp T &kp N &kp S &media_lock_macro
-&kp LSHFT &kp HOME &kp END &trans &trans &trans &kp UNDER &kp PLUS &kp LBRC &kp RBRC &kp PIPE &kp TILDE
+&kp LCTRL &kp C_PLAY_PAUSE &kp C_PREV &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp D &kp H &kp END &kp T &kp N &kp S
+&kp LSHFT &trans &trans &trans &trans &trans &kp UNDER &kp PLUS &kp LBRC &kp RBRC &kp PIPE &kp TILDE
 &kp LGUI &trans &kp SPACE &kp RET &trans &kp RALT
             >;
         };
