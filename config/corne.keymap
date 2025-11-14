@@ -32,7 +32,7 @@
             bindings = <
 &trans &trans &trans &trans &trans &trans &kp CARET &kp AMPS &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
 &kp LCTRL &kp C_PLAY_PAUSE &kp C_PREV &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE &trans &trans &trans &trans &trans
-&kp LSHFT &kp HOME &kp END &kp C_BRIGHTNESS_DN &kp C_BRIGHTNESS_UP &trans &trans &trans &trans &trans &trans &trans
+&kp LSHFT &kp HOME &kp END &trans &trans &trans &trans &trans &trans &trans &trans &trans
 &kp LGUI &mo 1 &kp SPACE &kp RET &mo 2 &kp RALT
             >;
         };
